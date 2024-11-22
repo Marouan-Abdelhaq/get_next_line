@@ -3,7 +3,9 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 42 // Valeur par défaut si BUFFER_SIZE n'est pas défini
+#endif
 
 size_t	ft_strlen(const char *str)
 {
@@ -48,12 +50,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 static int ft_read(int fd, char *tab)
 {
 	int count = 0;
-	count = read(fd, tab, 15);
+	count = read(fd, tab, BUFFER_SIZE);
 	if (count < 0)
 	{
 		return -1;
 	}
-		return (count);
+	tab[count] = '\0';
+	return (count);
 }
 static char *append_c(char *ligne, char c)
 {
@@ -61,8 +64,6 @@ static char *append_c(char *ligne, char c)
 	char *n_ligne;
 	tmp[0] = c;
 	tmp[1] = '\0';
-	if (!tmp)
-		return NULL;
 	n_ligne = ft_strjoin(ligne, tmp);
 	if (!n_ligne)
 	{
@@ -80,7 +81,7 @@ static char  *fun_lin(int fd, char *tab)
 {
 	static int i = 0;
 	static int j = 0;
-	char *ligne = malloc(43);
+	char *ligne = malloc(1);
 
 	if (!ligne)
 		return NULL;
@@ -106,7 +107,7 @@ static char  *fun_lin(int fd, char *tab)
 
 char *fun(int fd)
 {
-	static char tab[42];
+	static char tab[BUFFER_SIZE + 1];
 	char *ligne;
 
 	ligne = fun_lin(fd, tab);
