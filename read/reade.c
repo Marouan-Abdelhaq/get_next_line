@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+
+
 size_t	ft_strlen(const char *str)
 {
 	int	i;
@@ -78,7 +80,7 @@ static char  *fun_lin(int fd, char *tab)
 {
 	static int i = 0;
 	static int j = 0;
-	char *ligne = malloc(1);
+	char *ligne = malloc(43);
 
 	if (!ligne)
 		return NULL;
@@ -104,7 +106,7 @@ static char  *fun_lin(int fd, char *tab)
 
 char *fun(int fd)
 {
-	static char tab[15];
+	static char tab[42];
 	char *ligne;
 
 	ligne = fun_lin(fd, tab);
@@ -113,22 +115,18 @@ char *fun(int fd)
 	return ligne;
 }
 
-int main()
+int main(void)
 {
+    int fd = open("test.txt", O_RDONLY);
+    if (fd == -1)
+    {
+        perror("Error opening file");
+        return (1);
+    }
+    printf("%s", fun(fd));
+    printf("%s", fun(fd));
 
-	int fd = open("test.txt", O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		return 1;
-	}
-
-	char *line;
-	while ((line = fun(fd)) != NULL)
-	{
-		printf("%s", line);
-		free(line);
-	}
-	close(fd);
-	return 0;
+    close(fd);
+    return (0);
 }
+
