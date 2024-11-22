@@ -73,10 +73,6 @@ static char *append_c(char *ligne, char c)
 	free(ligne);
 	return n_ligne;
 }
-static char *build_l(char *ligne)
-{
-	return (append_c(ligne, '\n'));
-}
 static char  *fun_lin(int fd, char *tab)
 {
 	static int i = 0;
@@ -99,7 +95,7 @@ static char  *fun_lin(int fd, char *tab)
 	}
 	if (i < j && tab[i] == '\n')
 	{
-        ligne = build_l(ligne);
+        ligne = append_c(ligne, '\n');
         i++;
 	}
 	return ligne;
@@ -107,13 +103,16 @@ static char  *fun_lin(int fd, char *tab)
 
 char *fun(int fd)
 {
-	static char tab[BUFFER_SIZE + 1];
-	char *ligne;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*line;
 
-	ligne = fun_lin(fd, tab);
-	if (!ligne || ligne[0] == '\0')
-		return NULL;
-	return ligne;
+	line = fun_lin(fd, buffer);
+	if (!line || line[0] == '\0')
+	{
+		free(line);
+		return (NULL);
+	}
+	return (line);
 }
 
 int main(void)
