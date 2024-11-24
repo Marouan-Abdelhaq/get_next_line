@@ -63,7 +63,11 @@ static char *ft_ster_bster(int fd, char *tab)
             j = ft_chehal_9rity(fd, tab);
             if (j <= 0)
             {
-                if (ligne[0] == '\0') return (NULL);
+                if (ligne[0] == '\0')
+                {
+                    free(ligne);
+                    return (NULL);
+                }
                 break;
             }
             i = 0;
@@ -86,6 +90,9 @@ char *get_next_line(int fd)
 
     ligne = ft_ster_bster(fd, tab);
     if (!ligne || ligne[0] == '\0')
+    {
+        free(ligne);
         return (NULL);
+    }
     return (ligne);
 }
