@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/25 09:40:35 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/25 10:45:32 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 		j = ft_chehal_9rity(fd, tab);
 		if (j <= 0)
 		{
-			if (*ligne[0] == '\0')
+			if (**ligne == '\0')
 			{
 				free(*ligne);
 				return (0);
@@ -83,6 +83,8 @@ char	*get_next_line(int fd)
 	static char	tab[BUFFER_SIZE + 1];
 	char		*ligne;
 
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	ligne = ft_ster_bster2(fd, tab);
 	if (!ligne || ligne[0] == '\0')
 	{
