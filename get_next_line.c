@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/25 08:41:29 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:40:35 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	*ft_alloc(void)
 	return (ligne);
 }
 
-static char	*ft_ster_bster(int fd, char *tab, char **ligne)
+static int	ft_ster_bster(int fd, char *tab, char **ligne)
 {
 	static int	j;
 	static int	i;
@@ -47,9 +47,9 @@ static char	*ft_ster_bster(int fd, char *tab, char **ligne)
 			if (*ligne[0] == '\0')
 			{
 				free(*ligne);
-				return (NULL);
+				return (0);
 			}
-			break ;
+			return (1);
 		}
 		i = 0;
 	}
@@ -65,8 +65,6 @@ static char	*ft_ster_bster(int fd, char *tab, char **ligne)
 
 static char	*ft_ster_bster2(int fd, char *tab)
 {
-	static int	j;
-	static int	i;
 	char		*ligne;
 
 	ligne = ft_alloc();
@@ -85,7 +83,7 @@ char	*get_next_line(int fd)
 	static char	tab[BUFFER_SIZE + 1];
 	char		*ligne;
 
-	ligne = ft_ster_bster(fd, tab);
+	ligne = ft_ster_bster2(fd, tab);
 	if (!ligne || ligne[0] == '\0')
 	{
 		free(ligne);
