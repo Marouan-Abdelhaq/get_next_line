@@ -39,8 +39,9 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 	if (i >= j)
 	{
 		j = ft_read_from_fd(fd, tab);
+		if (j == -1 || j == 0)
+			return (ft_eof(j, ligne));
 		i = 0;
-		return (ft_eof(j, ligne));
 	}
 	*ligne = ft_append_char(*ligne, tab[i]);
 	if (!*ligne)
