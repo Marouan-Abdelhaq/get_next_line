@@ -18,7 +18,10 @@ static int	ft_read_from_fd(int fd, char *tab)
 
 	count = read(fd, tab, BUFFER_SIZE);
 	if (count < 0)
+	{
+		tab[0] = '\0';
 		return (-1);
+	}
 	tab[count] = '\0';
 	return (count);
 }
@@ -68,7 +71,12 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 	{
 		j = ft_read_from_fd(fd, tab);
 		i = 0;
-		if (j <= 0)
+		if (j == -1)
+		{
+			free(*ligne);
+			return (0);
+		}
+		if (j == 0)
 		{
 			if (**ligne == '\0')
 			{
@@ -79,6 +87,8 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 		}
 	}
 	*ligne = ft_append_char(*ligne, tab[i]);
+	if (!*ligne)
+		return (0);
 	if (tab[i] == '\n' || tab[i] == '\0')
 	{
 		i++;
@@ -98,6 +108,8 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	ligne = ft_alloc();
+	if (!ligne)
+		return (NULL);
 	while (1)
 	{
 		result = ft_ster_bster(fd, tab, &ligne);

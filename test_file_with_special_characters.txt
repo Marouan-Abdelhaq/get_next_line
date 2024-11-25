@@ -1,1 +1,0 @@
-Hello, world!\nThis is a test with special\tcharacters.
