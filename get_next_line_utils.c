@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:06:02 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/25 10:48:17 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:26:08 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,41 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
+int	ft_read_from_fd(int fd, char *tab)
+{
+	int	count;
+
+	count = read(fd, tab, BUFFER_SIZE);
+	if (count < 0)
+	{
+		tab[0] = '\0';
+		return (-1);
+	}
+	tab[count] = '\0';
+	return (count);
+}
+
+char	*ft_append_char(char *ligne, char c)
+{
+	int len;
+	char *n_ligne;
+	int i;
+
+	len = ft_strlen(ligne);
+	n_ligne = malloc(len + 2);
+	i = 0;
+	if (!n_ligne)
+	{
+		free(ligne);
+		return (NULL);
+	}
+	while (i < len)
+	{
+		n_ligne[i] = ligne[i];
+		i++;
+	}
+	n_ligne[len] = c;
+	n_ligne[len + 1] = '\0';
+	free(ligne);
+	return (n_ligne);
+}

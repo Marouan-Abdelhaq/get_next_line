@@ -6,60 +6,29 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/25 13:57:58 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:42:47 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	ft_read_from_fd(int fd, char *tab)
+static int	ft_eof(int j, char **ligne)
 {
-	int	count;
-
-	count = read(fd, tab, BUFFER_SIZE);
-	if (count < 0)
+	if (j == -1)
 	{
-		tab[0] = '\0';
-		return (-1);
+		free(*ligne);
+		return (0);
 	}
-	tab[count] = '\0';
-	return (count);
-}
-
-static void	*ft_alloc(void)
-{
-	char	*ligne;
-
-	ligne = malloc(1);
-	if (!ligne)
-		return (NULL);
-	ligne[0] = '\0';
-	return (ligne);
-}
-
-static char	*ft_append_char(char *ligne, char c)
-{
-	int		len;
-	char	*n_ligne;
-	int		i;
-
-	len = ft_strlen(ligne);
-	n_ligne = malloc(len + 2);
-	i = 0;
-	if (!n_ligne)
+	if (j == 0)
 	{
-		free(ligne);
-		return (NULL);
+		if (**ligne == '\0')
+		{
+			free(*ligne);
+			return (0);
+		}
+		return (1);
 	}
-	while (i < len)
-	{
-		n_ligne[i] = ligne[i];
-		i++;
-	}
-	n_ligne[len] = c;
-	n_ligne[len + 1] = '\0';
-	free(ligne);
-	return (n_ligne);
+	return (-1);
 }
 
 static int	ft_ster_bster(int fd, char *tab, char **ligne)
@@ -71,20 +40,7 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 	{
 		j = ft_read_from_fd(fd, tab);
 		i = 0;
-		if (j == -1)
-		{
-			free(*ligne);
-			return (0);
-		}
-		if (j == 0)
-		{
-			if (**ligne == '\0')
-			{
-				free(*ligne);
-				return (0);
-			}
-			return (1);
-		}
+		return (ft_eof(j, *ligne));
 	}
 	*ligne = ft_append_char(*ligne, tab[i]);
 	if (!*ligne)
@@ -98,11 +54,22 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 	return (-1);
 }
 
+static void	*ft_alloc(void)
+{
+	char	*ligne;
+
+	ligne = malloc(1);
+	if (!ligne)
+		return (NULL);
+	ligne[0] = '\0';
+	return (ligne);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	tab[BUFFER_SIZE + 1];
 	char		*ligne;
-	int			result;
+	int		result;
 
 	result = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -114,7 +81,7 @@ char	*get_next_line(int fd)
 	{
 		result = ft_ster_bster(fd, tab, &ligne);
 		if (result == 1)
-			break;
+			break ;
 		if (result == 0)
 			return (NULL);
 	}
