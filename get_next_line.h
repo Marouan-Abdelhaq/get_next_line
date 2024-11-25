@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:07:18 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/25 08:24:04 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:41:35 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_href_bheref(char *ligne, char c);
 
 #endif
