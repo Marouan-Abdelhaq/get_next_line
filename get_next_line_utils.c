@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:06:02 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/25 18:26:08 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:44:28 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ int	ft_read_from_fd(int fd, char *tab)
 
 char	*ft_append_char(char *ligne, char c)
 {
-	int len;
-	char *n_ligne;
-	int i;
+	int		len;
+	char	*n_ligne;
+	int		i;
 
 	len = ft_strlen(ligne);
 	n_ligne = malloc(len + 2);

@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/25 18:42:47 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:00:44 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 	{
 		j = ft_read_from_fd(fd, tab);
 		i = 0;
-		return (ft_eof(j, *ligne));
+		return (ft_eof(j, ligne));
 	}
 	*ligne = ft_append_char(*ligne, tab[i]);
 	if (!*ligne)
@@ -69,7 +69,7 @@ char	*get_next_line(int fd)
 {
 	static char	tab[BUFFER_SIZE + 1];
 	char		*ligne;
-	int		result;
+	int			result;
 
 	result = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
