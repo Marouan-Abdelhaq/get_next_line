@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:06:02 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/26 16:42:29 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:42:56 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
@@ -32,12 +34,12 @@ char	*ft_append_char(char *ligne, char c)
 
 	len = ft_strlen(ligne);
 	n_ligne = malloc(len + 2);
-	i = 0;
 	if (!n_ligne)
 	{
 		free(ligne);
 		return (NULL);
 	}
+	i = 0;
 	while (i < len)
 	{
 		n_ligne[i] = ligne[i];
