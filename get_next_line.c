@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/26 17:05:31 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:23:08 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	*ft_alloc(void)
 
 char	*get_next_line(int fd)
 {
-	static char	tab[BUFFER_SIZE + 1];
+	char	tab[BUFFER_SIZE + 1];
 	char		*ligne;
 	int			result;
 
@@ -85,6 +85,17 @@ char	*get_next_line(int fd)
 			break ;
 		if (result == 0)
 			return (NULL);
+		//printf ("tab ---> %s\n", tab);
 	}
 	return (ligne);
+}
+
+int main()
+{
+	int fd = open("test.txt", O_RDONLY);
+	//int jd = open("t.txt", O_RDONLY);
+	//int cd = open("te.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 }
