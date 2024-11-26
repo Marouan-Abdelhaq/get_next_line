@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/26 16:43:31 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:05:31 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static int	ft_ster_bster(int fd, char *tab, char **ligne)
 
 	if (i >= j)
 	{
-		j = read(fd, tab, BUFFER_SIZE);
-		if (j <= 0)
+		j = ft_read_from_fd(fd, tab);
+		if (j == -1 || j == 0)
 			return (ft_eof(j, ligne));
 		i = 0;
 	}

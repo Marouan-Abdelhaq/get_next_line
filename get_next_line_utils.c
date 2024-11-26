@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:06:02 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/26 16:42:29 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:05:01 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ size_t	ft_strlen(const char *str)
 		i++;
 	}
 	return (i);
+}
+
+int	ft_read_from_fd(int fd, char *tab)
+{
+	int	count;
+
+	count = read(fd, tab, BUFFER_SIZE);
+	if (count < 0)
+	{
+		tab[0] = '\0';
+		return (-1);
+	}
+	tab[count] = '\0';
+	return (count);
 }
 
 char	*ft_append_char(char *ligne, char c)
