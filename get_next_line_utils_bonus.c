@@ -32,6 +32,8 @@ int	ft_read_from_fd(int fd, char *tab)
 
 	if (!tab)
 		return (-1);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
 	count = read(fd, tab, BUFFER_SIZE);
 	if (count < 0)
 	{
