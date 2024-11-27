@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/26 18:23:45 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:56:53 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,4 @@ char	*get_next_line(int fd)
 	if (len > 0 && ligne[len - 1] != '\n')
 		ligne = ft_append_char(ligne, '\n');
 	return (ligne);
-}
-#include <fcntl.h>
-#include <stdio.h>
-int main()
-{
-	int fd = open("test.txt", O_RDONLY);
-	int jd = open("t.txt", O_RDONLY);
-	int cd = open("te.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(jd));
-	printf("%s", get_next_line(cd));
-	
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(jd));
-	printf("%s", get_next_line(cd));
-	
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(jd));
-	printf("%s", get_next_line(cd));
 }
