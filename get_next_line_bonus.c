@@ -27,21 +27,21 @@ static int ft_eof(int j, char **ligne) {
     return (1);
 }
 
-static int	ft_ster_bster(int fd, t_gnl_state state[1024], char **ligne) {
-    if (state[fd].i >= state[fd].j) {
-        state[fd].j = ft_read_from_fd(fd, state[fd].tab);
-        if (state[fd].j <= 0)
-            return (ft_eof(state[fd].j, ligne));
-        state[fd].i = 0;
+static int	ft_ster_bster(int fd, t_gnl_state tab[1024], char **ligne) {
+    if (tab[fd].i >= tab[fd].j) {
+        tab[fd].j = ft_read_from_fd(fd, tab[fd].tab);
+        if (tab[fd].j <= 0)
+            return (ft_eof(tab[fd].j, ligne));
+        tab[fd].i = 0;
     }
-    *ligne = ft_append_char(*ligne, state[fd].tab[state[fd].i]);
+    *ligne = ft_append_char(*ligne, tab[fd].tab[tab[fd].i]);
     if (!*ligne)
         return (0);
-    if (state[fd].tab[state[fd].i] == '\n' || state[fd].tab[state[fd].i] == '\0') {
-        state[fd].i++;
+    if (tab[fd].tab[tab[fd].i] == '\n' || tab[fd].tab[tab[fd].i] == '\0') {
+        tab[fd].i++;
         return (1);
     }
-    state[fd].i++;
+    tab[fd].i++;
     return (-1);
 }
 
@@ -56,7 +56,7 @@ static char	*ft_alloc(void) {
 }
 
 char *get_next_line(int fd) {
-    static t_gnl_state state[1024] = {{{0}, 0, 0}};
+    static t_gnl_state tab[1024] = {{{0}, 0, 0}};
     char *ligne;
     int result;
 
@@ -68,10 +68,11 @@ char *get_next_line(int fd) {
         return (NULL);
 
     while (1) {
-        result = ft_ster_bster(fd, state, &ligne);
+        result = ft_ster_bster(fd, tab, &ligne);
         if (result == 1)
             break;
         if (result == 0) {
+            free(ligne);
             return (NULL);
         }
     }
