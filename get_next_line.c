@@ -6,12 +6,12 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/29 11:17:36 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:25:06 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+#include <stdio.h>
 static int	ft_eof(int j, char **ligne)
 {
 	if (j == -1)
@@ -68,9 +68,9 @@ static void	*ft_alloc(void)
 
 char	*get_next_line(int fd)
 {
-	char	tab[BUFFER_SIZE];
-	char	*ligne;
-	int		result;
+	static char	tab[BUFFER_SIZE];
+	char		*ligne;
+	int			result;
 
 	result = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -87,4 +87,15 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	return (ligne);
+}
+
+
+#include <fcntl.h>
+int main()
+{
+	int fd = open("test.txt", O_RDONLY);
+	
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 }
