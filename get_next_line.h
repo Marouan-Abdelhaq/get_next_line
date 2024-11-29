@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:07:18 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/27 16:57:25 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:23:48 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 40
 # endif
-#if BUFFER_SIZE <= 0
-# undef BUFFER_SIZE
-# define BUFFER_SIZE 0
-#endif
+# if BUFFER_SIZE <= 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
+# endif
 
 # include <stddef.h>
 # include <stdlib.h>

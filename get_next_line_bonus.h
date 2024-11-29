@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:07:18 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/27 16:49:31 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/28 09:41:39 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 40
+#  define BUFFER_SIZE 5
 # endif
-#if BUFFER_SIZE <= 0
-# undef BUFFER_SIZE
-# define BUFFER_SIZE 0
-#endif
+# if BUFFER_SIZE <= 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
+# endif
 
 # include <stddef.h>
 # include <stdlib.h>

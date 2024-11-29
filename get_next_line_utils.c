@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:06:02 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/27 16:30:08 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:22:49 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlen(const char *str)
 int	ft_read_from_fd(int fd, char *tab)
 {
 	int	count;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	count = read(fd, tab, BUFFER_SIZE);

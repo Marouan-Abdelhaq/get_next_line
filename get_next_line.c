@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/27 16:57:31 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:17:36 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ static void	*ft_alloc(void)
 
 char	*get_next_line(int fd)
 {
-	static char	tab[BUFFER_SIZE + 1];
-	char		*ligne;
-	int			result;
+	char	tab[BUFFER_SIZE];
+	char	*ligne;
+	int		result;
 
 	result = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
