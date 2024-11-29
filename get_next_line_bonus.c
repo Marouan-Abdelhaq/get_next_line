@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/29 11:18:56 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:35:57 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 typedef struct s_gnl_state
 {
-	char	tab[BUFFER_SIZE];
+	char	tab[BUFFER_SIZE + 1];
 	int		j;
 	int		i;
 }			t_gnl_state;

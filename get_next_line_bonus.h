@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:07:18 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/28 09:41:39 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:36:42 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
-# if BUFFER_SIZE <= 0
+# if BUFFER_SIZE <= 0 || BUFFER_SIZE >= 2147483647
 #  undef BUFFER_SIZE
 #  define BUFFER_SIZE 0
 # endif
