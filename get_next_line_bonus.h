@@ -6,7 +6,7 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:07:18 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/29 14:36:42 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/30 10:28:15 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef struct s_gnl_state
+{
+	char	tab[BUFFER_SIZE + 1];
+	int		j;
+	int		i;
+}			t_gnl_state;
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);

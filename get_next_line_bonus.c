@@ -6,18 +6,11 @@
 /*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:10:34 by mabdelha          #+#    #+#             */
-/*   Updated: 2024/11/29 14:35:57 by mabdelha         ###   ########.fr       */
+/*   Updated: 2024/11/30 10:28:11 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
-typedef struct s_gnl_state
-{
-	char	tab[BUFFER_SIZE + 1];
-	int		j;
-	int		i;
-}			t_gnl_state;
 
 static int	ft_eof(int j, char **ligne)
 {
